@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Tour 360° — Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <div id="viewer">
+      <div id="file-picker">
+        <div class="picker-box">
+          <div class="loader-title" id="loader-title">Caricamento...</div>
+          <div class="loader-spinner"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lang-toggle">
+      <button class="lang-btn active" data-lang="it">IT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <div id="hotspot-panel" class="hs-hidden">
+      <button id="hs-close" aria-label="Cerrar">✕</button>
+      <img id="hs-img" alt="" />
+      <div class="hs-body">
+        <h3 id="hs-title"></h3>
+        <p id="hs-desc"></p>
+        <a id="hs-link" href="#" target="_blank">Vedi altro →</a>
+      </div>
+    </div>
+
+    <div id="timeline-bar">
+      <div id="tl-counter">—</div>
+      <div id="tl-track">
+        <div id="tl-line"></div>
+        <div id="tl-fill"></div>
+        <canvas id="tl-ticks"></canvas>
+        <div id="tl-pois"></div>
+        <div id="tl-handle"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three":          "https://unpkg.com/three@0.163.0/build/three.module.js",
+      "three/addons/":  "https://unpkg.com/three@0.163.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

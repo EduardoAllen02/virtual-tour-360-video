@@ -1,0 +1,137 @@
+{
+  "title": "Tour Virtual 360° — Río",
+  "video": "media/tour_web.mp4",
+  "fps": 15,
+  "frameCount": 246,
+  "pois": [
+    {
+      "id": "salida",
+      "label": { "it": "Inizio percorso", "en": "Start" },
+      "frame": 0,
+      "cameraAngle": { "lon": 0, "lat": 0 }
+    },
+    {
+      "id": "tramo1",
+      "label": { "it": "Primo tratto", "en": "First stretch" },
+      "frame": 49,
+      "cameraAngle": { "lon": -20, "lat": -10 }
+    },
+    {
+      "id": "tramo2",
+      "label": { "it": "Tratto centrale", "en": "Central stretch" },
+      "frame": 98,
+      "cameraAngle": { "lon": 40, "lat": 5 }
+    },
+    {
+      "id": "panoramica",
+      "label": { "it": "Vista panoramica", "en": "Panoramic view" },
+      "frame": 157,
+      "cameraAngle": { "lon": 0, "lat": 10 }
+    },
+    {
+      "id": "llegada",
+      "label": { "it": "Arrivo", "en": "Arrival" },
+      "frame": 216,
+      "cameraAngle": { "lon": 0, "lat": 0 }
+    }
+  ],
+  "overlays": [
+    {
+      "id": "bienvenida",
+      "type": "info",
+      "lon": 0,
+      "lat": 8,
+      "frameStart": 0,
+      "frameEnd": 49,
+      "data": {
+        "title":       { "it": "Benvenuto al fiume",  "en": "Welcome to the river" },
+        "description": { "it": "Escursione in barca", "en": "Boat excursion"       },
+        "action":      { "it": "Esplora",             "en": "Explore"              }
+      }
+    },
+    {
+      "id": "tour-precio",
+      "type": "price",
+      "lon": 45,
+      "lat": 5,
+      "frameStart": 49,
+      "frameEnd": 98,
+      "data": {
+        "title":       { "it": "Tour in barca",                "en": "Boat Tour"                  },
+        "price":       "€45",
+        "description": { "it": "Include guida e attrezzatura", "en": "Guide & equipment included" },
+        "action":      { "it": "Prenota",                      "en": "Book now"                   }
+      }
+    },
+    {
+      "id": "agua-turquesa",
+      "type": "info",
+      "lon": -35,
+      "lat": -10,
+      "frameStart": 98,
+      "frameEnd": 157,
+      "data": {
+        "title":       { "it": "Acque turchesi",               "en": "Turquoise Waters"    },
+        "description": { "it": "Originate da sorgenti alpine", "en": "From alpine springs" },
+        "action":      { "it": "Scopri",                       "en": "Discover"            }
+      }
+    },
+    {
+      "id": "flora",
+      "type": "info",
+      "lon": -60,
+      "lat": 10,
+      "frameStart": 157,
+      "frameEnd": 216,
+      "data": {
+        "title":       { "it": "Flora rivierasca",               "en": "Riverside Flora"      },
+        "description": { "it": "Pioppi, frassini e vegetazione", "en": "Poplars & ash trees" },
+        "action":      { "it": "Esplora",                        "en": "Explore"              }
+      }
+    }
+  ],
+  "hotspots": [
+    {
+      "id": "acque-turquesa",
+      "lon": 20,
+      "lat": -8,
+      "frameStart": 0,
+      "frameEnd": 245,
+      "label": { "it": "Acque turchesi", "en": "Turquoise Waters" },
+      "description": {
+        "it": "Le acque cristalline del fiume provengono da sorgenti di montagna, mantenendo una temperatura fresca tutto l'anno.",
+        "en": "The crystal-clear river waters originate from mountain springs, maintaining a cool temperature year-round."
+      },
+      "image": "../media/hs_030.jpg",
+      "link": "#"
+    },
+    {
+      "id": "tour-lancha",
+      "lon": -40,
+      "lat": 5,
+      "frameStart": 0,
+      "frameEnd": 245,
+      "label": { "it": "Tour in barca", "en": "Boat Tour" },
+      "description": {
+        "it": "Escursione in barca sul fiume. Include guida esperto e attrezzatura di sicurezza. €45 per persona.",
+        "en": "River boat excursion. Includes expert guide and safety equipment. €45 per person."
+      },
+      "image": "../media/hs_120.jpg",
+      "link": "#"
+    },
+    {
+      "id": "flora-ribera",
+      "lon": 60,
+      "lat": 12,
+      "frameStart": 0,
+      "frameEnd": 245,
+      "label": { "it": "Flora rivierasca", "en": "Riverside Flora" },
+      "description": {
+        "it": "Pioppi, frassini e vegetazione tipica delle sponde. Habitat naturale protetto con ricca biodiversità.",
+        "en": "Poplars, ash trees and typical riverbank vegetation. Protected natural habitat with rich biodiversity."
+      },
+      "image": "../media/hs_190.jpg",
+      "link": "#"
+    }
+  ]
+}
