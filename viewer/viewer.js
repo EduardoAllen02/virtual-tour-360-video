@@ -27,8 +27,44 @@ function drawFrame() {
   if (videoTex) videoTex.needsUpdate = true;
 }
 
-// Draw frame immediately after every seek completes
-video.addEventListener('seeked', drawFrame);
+// ── Seek throttle ─────────────────────────────────────────────
+// At most one seek in flight at a time. While a seek is active, incoming
+// goToFrame calls store only the latest target — intermediates are discarded.
+// drawFrame() is called only after 'seeked' fires, so the canvas captures
+// the real decoded frame (not the pre-seek stale frame).
+let _pendingTime = -1;
+let _seekActive  = false;
+
+function scheduleSeek(time) {
+  if (_seekActive) {
+    _pendingTime = time;    // keep latest, discard earlier pending
+    return;
+  }
+  // Already there — no seek needed, just draw
+  if (Math.abs(video.currentTime - time) < 0.001) {
+    drawFrame();
+    return;
+  }
+  _seekActive  = true;
+  _pendingTime = -1;
+  video.currentTime = time;
+}
+
+video.addEventListener('seeked', () => {
+  drawFrame();
+  if (_pendingTime >= 0) {
+    const t = _pendingTime;
+    _pendingTime = -1;
+    if (Math.abs(video.currentTime - t) < 0.001) {
+      _seekActive = false;
+      drawFrame();
+    } else {
+      video.currentTime = t;   // _seekActive stays true, next seeked will fire
+    }
+  } else {
+    _seekActive = false;
+  }
+});
 
 // ── State ─────────────────────────────────────────────────────
 let fps        = 15;
@@ -142,8 +178,7 @@ export function goToFrame(idx) {
   idx = Math.max(0, Math.min(frameCount - 1, idx));
   currentIdx = idx;
   if (window._timelineOnFrame) window._timelineOnFrame(idx);
-  // Set video time — 'seeked' event will call drawFrame()
-  video.currentTime = idx / fps;
+  scheduleSeek(idx / fps);
 }
 
 // ── Init ──────────────────────────────────────────────────────
